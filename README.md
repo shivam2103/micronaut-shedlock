@@ -3,3 +3,6 @@
 Tech used
 - Java 11
 - Micronaut Framework
+- Postgresql
+- Flyway
+- Shedlock
