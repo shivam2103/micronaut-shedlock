@@ -1,0 +1,60 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.5.3"
+    id("io.micronaut.test-resources") version "3.5.3"
+}
+
+version = "0.1"
+group = "com.shivam"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.spring:micronaut-spring-annotation")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    implementation("io.micronaut.data:micronaut-data-spring")
+    implementation("io.micronaut.data:micronaut-data-spring-jpa")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    implementation("org.springframework:spring-orm")
+    implementation("org.springframework.boot:spring-boot-starter")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.postgresql:postgresql")
+    testAnnotationProcessor("io.micronaut.spring:micronaut-spring-annotation")
+    implementation("io.micronaut:micronaut-validation")
+
+    // Flyway
+    implementation 'io.micronaut.flyway:micronaut-flyway'
+
+    // Shedlock configuration
+    implementation group: 'net.javacrumbs.shedlock', name: 'shedlock-micronaut', version: '4.0.0'
+    implementation 'net.javacrumbs.shedlock:shedlock-provider-jdbc-micronaut:4.29.0'
+}
+
+
+application {
+    mainClass.set("com.shivam.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("com.shivam.*")
+    }
+}
+
+
+

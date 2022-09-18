@@ -1,0 +1,35 @@
+micronaut:
+  application:
+    name: micronautShedlockExample
+datasources:
+  default:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/test
+    username: test123
+    password: test
+jpa.default.properties.hibernate.hbm2ddl.auto: update
+
+netty:
+  default:
+    allocator:
+      max-order: 3
+
+flyway:
+  datasources:
+    default:
+      locations: classpath:/db/migration
+      baseline-on-migrate: true
+      validate-on-migrate: true
+
+#Scehduler time
+schedule:
+  time: "0 0/1 * * * ?"
+  #Shedlock config
+  lock:
+    atmost: 5m
+    atleast: 2m
+
+#Default config for shedlock
+shedlock:
+  defaults:
+    lock-at-most-for: 20m
