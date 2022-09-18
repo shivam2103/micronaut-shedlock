@@ -6,3 +6,6 @@ Tech used
 - Postgresql
 - Flyway
 - Shedlock
+- Atleast 1 table which handles jpa
+- Configured multiple instance of same application on different PORT in intellij
+- Used Dbeaver to check an entry got inserted into shedlock table
