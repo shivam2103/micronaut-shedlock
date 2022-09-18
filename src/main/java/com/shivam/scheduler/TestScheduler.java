@@ -15,5 +15,6 @@ public class TestScheduler {
     )
     public void testShedLock() {
         System.out.println("Ran this on this instance");
+        System.out.println(LocalDateTime.now());
     }
 }
